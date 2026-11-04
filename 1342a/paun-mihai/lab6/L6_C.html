@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<title>L6_C</title>
+</head>
+<body>
+
+<h1 id="titlu">Culori la cerere</h1>
+
+<p id="par">Prima linie de text<br>A doua linie de text<br>A treia linie de text</p>
+
+<script>
+// cere o culoare; întoarce culoarea validă sau null (Cancel / culoare incorectă)
+function cereCuloare(intrebare) {
+    var c = prompt(intrebare, "red");
+    if (c === null) {
+        return null;                       // Cancel: nu se întâmplă nimic
+    }
+    c = c.trim();
+    if (!CSS.supports("color", c)) {
+        alert("Culoare incorectă: „" + c + "”");
+        return null;
+    }
+    return c;
+}
+
+document.getElementById("titlu").onclick = function () {
+    var c = cereCuloare("Culoarea textului titlului:");
+    if (c !== null) {
+        this.style.color = c;
+    }
+};
+
+document.getElementById("par").onclick = function () {
+    var c = cereCuloare("Culoarea de fundal a paragrafului:");
+    if (c !== null) {
+        this.style.backgroundColor = c;
+    }
+};
+</script>
+
+</body>
+</html>

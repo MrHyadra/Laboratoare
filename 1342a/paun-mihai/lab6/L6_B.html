@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<title>L6_B</title>
+</head>
+<body>
+
+<button id="schimba" type="button">Schimbă paragrafele între ele</button>
+
+<p id="p1" style="color: white; background-color: green; font-size: 20px;">Primul paragraf: text verde</p>
+
+<p id="p2" style="color: black; background-color: orange; font-style: italic;">Al doilea paragraf: text portocaliu</p>
+
+<script>
+var p1 = document.getElementById("p1");
+var p2 = document.getElementById("p2");
+
+// clic pe paragraf: prompt pentru text nou, aplicat doar la OK
+function cereText() {
+    var text = prompt("Introduceți noul text al paragrafului:", this.innerHTML);
+    if (text !== null && text !== "") {
+        this.innerHTML = text;
+    }
+}
+p1.onclick = cereText;
+p2.onclick = cereText;
+
+// clic pe buton: conținuturile se schimbă între ele
+document.getElementById("schimba").onclick = function () {
+    var temp = p1.innerHTML;
+    p1.innerHTML = p2.innerHTML;
+    p2.innerHTML = temp;
+};
+</script>
+
+</body>
+</html>
